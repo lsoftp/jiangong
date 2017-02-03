@@ -736,7 +736,7 @@ def collect_crystal():
     print(datetime.now().strftime('%Y-%m-%d %H:%M:%S'), 'collect_crystal')
 
     cookies_auto(check_collect, 'global:auto.collect.cookies')
-	shake_gift()
+    shake_gift()
     #print(datetime.now().strftime('%Y-%m-%d %H:%M:%S'), 'shake_gift')
 
 
