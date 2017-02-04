@@ -655,7 +655,7 @@ def shake_box1(user, cookies, user_info):
                 print(datetime.now().strftime('%Y-%m-%d %H:%M:%S'), '************',r_info,box_info)
                 time.sleep(2)
                 r = r_info.get('get')
-                log =  '摇宝箱摇宝箱开启:获得:%水晶.' % r_info.get('num')
+                log =  '摇宝箱摇宝箱开启:获得:%s水晶.' % r_info.get('num')
 #                red_log(user, '自动执行', '宝箱', log)
             else:
                 log =  '摇宝箱摇宝箱丢弃:%d水晶.' % cost
@@ -736,7 +736,7 @@ def collect_crystal():
     print(datetime.now().strftime('%Y-%m-%d %H:%M:%S'), 'collect_crystal')
 
     cookies_auto(check_collect, 'global:auto.collect.cookies')
-	shake_gift()
+    shake_gift()
     #print(datetime.now().strftime('%Y-%m-%d %H:%M:%S'), 'shake_gift')
 
 
