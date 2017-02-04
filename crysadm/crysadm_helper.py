@@ -633,10 +633,11 @@ def shake_box(user, cookies, user_info):
     
     
 def shake_box1(user, cookies, user_info):
+    ffff = open("/app/shake_box.log",'a')
     print(datetime.now().strftime('%Y-%m-%d %H:%M:%S'), 'shake_gift')
     box_info = api_shakegift(cookies)
     time.sleep(2)
-    print(datetime.now().strftime('%Y-%m-%d %H:%M:%S'), '************',box_info)
+    print(datetime.now().strftime('%Y-%m-%d %H:%M:%S'), '************',box_info,file=ffff)
     if box_info.get('r') == -2: return
     left = box_info.get('left')
     if(left is None): left=1
@@ -649,12 +650,12 @@ def shake_box1(user, cookies, user_info):
 #            red_log(user, '自动执行', '宝箱', log)
         if id is not None:
             stone_info = api_stoneinfo(cookies,id)
-            print(datetime.now().strftime('%Y-%m-%d %H:%M:%S'), '************stoneinfo',stone_info)
+            print(datetime.now().strftime('%Y-%m-%d %H:%M:%S'), '************stoneinfo',stone_info,file=ffff)
             time.sleep(2)
             cost = stone_info.get('cost')
             if cost==0:
                 r_info = api_openshakestone(cookies, id, direction='3')
-                print(datetime.now().strftime('%Y-%m-%d %H:%M:%S'), '************',r_info,box_info)
+                print(datetime.now().strftime('%Y-%m-%d %H:%M:%S'), '************',r_info,box_info,file=ffff)
                 time.sleep(2)
                 r = r_info.get('get')
                 log =  '摇宝箱摇宝箱开启:获得:%s水晶.' % r_info.get('num')
@@ -665,8 +666,9 @@ def shake_box1(user, cookies, user_info):
         red_log(user, '自动执行', '宝箱', log)
         box_info = api_shakegift(cookies)
         time.sleep(2)
-        print(datetime.now().strftime('%Y-%m-%d %H:%M:%S'), '************',box_info)
+        print(datetime.now().strftime('%Y-%m-%d %H:%M:%S'), '************',box_info,,file=ffff)
         left = box_info.get('left')   
+    ffff.close()
     
 # 执行秘银进攻函数
 def check_searcht(user, cookies, user_info):
