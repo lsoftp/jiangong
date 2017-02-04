@@ -642,6 +642,8 @@ def shake_box1(user, cookies, user_info):
     if(left is None): left=1
     while(left > -1):
         id = box_info.get('id')
+        log='shake:%s'%box_info
+        red_log(user, '自动执行', '宝箱', log)
         if id is None:
             log = '摇宝箱丢弃石头'
 #            red_log(user, '自动执行', '宝箱', log)
