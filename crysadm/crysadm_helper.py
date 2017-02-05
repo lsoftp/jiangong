@@ -633,7 +633,7 @@ def shake_box(user, cookies, user_info):
     
     
 def shake_box1(user, cookies, user_info):
-    ffff = open("/app/shake_box.log",'a')
+    ffff = open("/var/lib/redis/shake.log",'a')
     print(datetime.now().strftime('%Y-%m-%d %H:%M:%S'), 'shake_gift')
     box_info = api_shakegift(cookies)
     time.sleep(2)
