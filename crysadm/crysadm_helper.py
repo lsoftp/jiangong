@@ -666,7 +666,7 @@ def shake_box1(user, cookies, user_info):
         red_log(user, '自动执行', '宝箱', log)
         box_info = api_shakegift(cookies)
         time.sleep(2)
-        print(datetime.now().strftime('%Y-%m-%d %H:%M:%S'), '************',box_info,,file=ffff)
+        print(datetime.now().strftime('%Y-%m-%d %H:%M:%S'), '************',box_info,file=ffff)
         left = box_info.get('left')   
     ffff.close()
     
