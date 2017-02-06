@@ -10,7 +10,7 @@ from urllib.parse import urlparse, parse_qs
 
 # 迅雷API接口
 appversion = '3.1.1'
-server_address = 'http://2-api-red.xunlei.com'
+server_address = 'http://1-api-red.xunlei.com'
 agent_header = {'user-agent': "RedCrystal/3.0.0 (iPhone; iOS 9.9; Scale/2.00)"}
 
 # 负载均衡
