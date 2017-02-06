@@ -143,12 +143,12 @@ def api_shakegift(cookies):
 #查看摇宝箱信息
 def api_stoneinfo(cookies,id):
     cookies['origin'] = '4' if len(cookies.get('sessionid')) == 128 else '1'
-    body = dict(v='1',id=str(id),tag='1' )
+    body = dict(v='1',id=str(id),tag='2' )
     return api_post(url='/index.php?r=usr/stoneInfo', data=body, cookies=cookies)
 
 def api_openshakestone(cookies, giftbox_id, direction):
     cookies['origin'] = '4' if len(cookies.get('sessionid')) == 128 else '1'
-    body = dict(v='1', id=str(giftbox_id), side=direction,tag='1')
+    body = dict(v='1', id=str(giftbox_id), side=direction,tag='2')
     return api_post(url='/index.php?r=usr/openStone', data=body, cookies=cookies)
 
 # 提交打开宝箱请求
