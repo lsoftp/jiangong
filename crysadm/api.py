@@ -133,6 +133,11 @@ def api_giftbox(cookies):
     body = dict(tp='0', p='0', ps='60', t='', v='2', cmid='-1')
     return api_post(url='/?r=usr/giftbox', data=body, cookies=cookies)
 
+def api_shakeLeft(cookies):
+    cookies['origin'] = '4' if len(cookies.get('sessionid')) == 128 else '1'
+#    body = dict(tp='0', p='0', ps='60', t='', v='2', cmid='-1')
+    return api_post(url='/index.php?r=usr/shakeLeft', data=None, cookies=cookies)    
+	
 # 摇宝箱信息
 def api_shakegift(cookies):
     cookies['origin'] = '4' if len(cookies.get('sessionid')) == 128 else '1'

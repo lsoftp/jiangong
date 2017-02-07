@@ -634,14 +634,19 @@ def shake_box(user, cookies, user_info):
     
 def shake_box1(user, cookies, user_info):
     print(datetime.now().strftime('%Y-%m-%d %H:%M:%S'), 'shake_gift')
-    box_info = api_shakegift(cookies)
+    box_info = api_shakeLeft(cookies)
     time.sleep(2)
-    log1='shake1:%s'%box_info
+    log1='shakeleft:%s'%box_info
     red_log(user, '自动执行', '宝箱', log1)
     if box_info.get('r') == -2: return
     left = box_info.get('left')
     if(left is None): left=1
     while(left > -1):
+        box_info = api_shakegift(cookies)
+        time.sleep(4)
+        log1='shake2:%s'%box_info
+        red_log(user, '自动执行', '宝箱', log1)
+        left = box_info.get('left') 
         id = box_info.get('id')
         log='empty'
         if id is None:
@@ -662,11 +667,7 @@ def shake_box1(user, cookies, user_info):
             else:
                 log =  '摇宝箱摇宝箱丢弃:%d水晶.' % cost
         red_log(user, '自动执行', '宝箱', log)
-        box_info = api_shakegift(cookies)
-        time.sleep(4)
-        log1='shake2:%s'%box_info
-        red_log(user, '自动执行', '宝箱', log1)
-        left = box_info.get('left')   
+  
     
 # 执行秘银进攻函数
 def check_searcht(user, cookies, user_info):
