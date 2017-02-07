@@ -640,7 +640,7 @@ def shake_box1(user, cookies, user_info):
     red_log(user, '自动执行', '宝箱', log1)
     if box_info.get('r') == -2: return
     left = box_info.get('left')
-    if(left is None): left=1
+    if(left !=0 ): left=int(left)
     while(left > 0):
         box_info = api_shakegift(cookies)
         time.sleep(4)
