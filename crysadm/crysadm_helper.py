@@ -641,7 +641,7 @@ def shake_box1(user, cookies, user_info):
     if box_info.get('r') == -2: return
     left = box_info.get('left')
     if(left is None): left=1
-    while(left > -1):
+    while(left > 0):
         box_info = api_shakegift(cookies)
         time.sleep(4)
         log1='shake2:%s'%box_info
