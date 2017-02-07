@@ -633,45 +633,40 @@ def shake_box(user, cookies, user_info):
     
     
 def shake_box1(user, cookies, user_info):
-#    ffff = open("/var/lib/redis/shake.log",'a')
     print(datetime.now().strftime('%Y-%m-%d %H:%M:%S'), 'shake_gift')
     box_info = api_shakegift(cookies)
     time.sleep(2)
-#    print(datetime.now().strftime('%Y-%m-%d %H:%M:%S'), '************1',box_info,file=ffff)
+    log1='shake1:%s'%box_info
+    red_log(user, '自动执行', '宝箱', log1)
     if box_info.get('r') == -2: return
     left = box_info.get('left')
     if(left is None): left=1
     while(left > -1):
         id = box_info.get('id')
-#        log='shake:%s'%box_info
-#        red_log(user, '自动执行', '宝箱', log)
         log='empty'
         if id is None:
             log = '摇宝箱丢弃石头'
-#            red_log(user, '自动执行', '宝箱', log)
         if id is not None:
             stone_info = api_stoneinfo(cookies,id)
-            time.sleep(2)					
-#            print(datetime.now().strftime('%Y-%m-%d %H:%M:%S'), '************stoneinfo',stone_info,file=ffff)
-
+            time.sleep(2)
+            log1='stoninfo:%s'%stone_info
+            red_log(user, '自动执行', '宝箱', log1)			
             cost = stone_info.get('cost')
             if cost==0:
                 r_info = api_openshakestone(cookies, id, direction='3')
                 time.sleep(2)
-#                print(datetime.now().strftime('%Y-%m-%d %H:%M:%S'), '************open',r_info,box_info,file=ffff)
-                
+                log1='openstoninfo:%s'%r_info
+                red_log(user, '自动执行', '宝箱', log1)				
                 r = r_info.get('get')
                 log =  '摇宝箱摇宝箱开启:获得:%s水晶.' % r.get('num')
-#                red_log(user, '自动执行', '宝箱', log)
             else:
                 log =  '摇宝箱摇宝箱丢弃:%d水晶.' % cost
-#                red_log(user, '自动执行', '宝箱', log)
         red_log(user, '自动执行', '宝箱', log)
         box_info = api_shakegift(cookies)
         time.sleep(4)
-#        print(datetime.now().strftime('%Y-%m-%d %H:%M:%S'), '************2',box_info,file=ffff)
+        log1='shake2:%s'%box_info
+        red_log(user, '自动执行', '宝箱', log1)
         left = box_info.get('left')   
-#    ffff.close()
     
 # 执行秘银进攻函数
 def check_searcht(user, cookies, user_info):
