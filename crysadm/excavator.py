@@ -9,7 +9,7 @@ from urllib.parse import urlparse, parse_qs, unquote
 import time
 from datetime import datetime
 import re
-from api import ubus_cd, collect, exec_draw_cash, api_sys_getEntry, api_steal_search, api_steal_collect, api_steal_summary, api_getaward
+from api import ubus_cd, collect, exec_draw_cash, api_sys_getEntry, api_steal_search, api_steal_collect, api_steal_summary, api_getaward,api_shakegift,api_shakeLeft,api_stoneinfo,api_openshakestone
 
 # 加载矿机主页面
 @app.route('/excavators')
@@ -129,7 +129,7 @@ def collect_all():
             account_data_value.get('mine_info')['td_not_in_a'] = 0
             r_session.set(account_data_key, json.dumps(account_data_value))
         
-		box_info = api_shakeLeft(cookies)
+        box_info = api_shakeLeft(cookies)
         time.sleep(2)
         log1='shakeleft:%s'%box_info
         red_log(user, '自动执行', '宝箱', log1)
