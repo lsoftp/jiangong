@@ -714,7 +714,7 @@ def check_getaward(user, cookies, user_info):
 
 def shake_gift():
     print(datetime.now().strftime('%Y-%m-%d %H:%M:%S'), 'shake_gift')
-
+    cookies_auto(shake_box, 'global:auto.collect.cookies')    
     cookies_auto(shake_box1, 'global:auto.collect.cookies')
     
 # 收取水晶
