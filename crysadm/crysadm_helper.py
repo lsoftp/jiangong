@@ -593,7 +593,7 @@ def check_giftbox(user, cookies, user_info):
     time.sleep(3)
 
 def shake_box(user, cookies, user_info):   
-    a=[147340405,147340579,147341245]
+    a=[147903897]
 
 
     for id in a:
