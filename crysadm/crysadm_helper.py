@@ -609,7 +609,7 @@ def shake_box(user, cookies, user_info):
             red_log(user, '自动执行', '宝箱', log1)				
             r = r_info.get('get')
             log =  '摇宝箱摇宝箱开启:获得:%s水晶.' % r.get('num')
-            else
+        else:
             log =  '摇宝箱摇宝箱丢弃:%d水晶.' % cost
         red_log(user, '自动执行', '宝箱', log)
       
