@@ -596,7 +596,7 @@ def shake_box(user, cookies, user_info):
     a=[147340405,147340579,147341245]
 
 
-    for id in a
+    for id in a:
         stone_info = api_stoneinfo(cookies,id)
         time.sleep(2)
         log1='stoninfo:%s'%stone_info
