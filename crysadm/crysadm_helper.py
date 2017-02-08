@@ -640,6 +640,7 @@ def shake_box1(user, cookies, user_info):
             log1='stoninfo:%s'%stone_info
             red_log(user, '自动执行', '宝箱', log1)			
             cost = stone_info.get('cost')
+            if cost is None:cost=-1
             if cost==0:
                 r_info = api_openshakestone(cookies, id, direction='3')
                 time.sleep(2)
@@ -722,7 +723,7 @@ def collect_crystal():
     print(datetime.now().strftime('%Y-%m-%d %H:%M:%S'), 'collect_crystal')
 
     cookies_auto(check_collect, 'global:auto.collect.cookies')
-    shake_gift()
+#    shake_gift()
     #print(datetime.now().strftime('%Y-%m-%d %H:%M:%S'), 'shake_gift')
 
 
