@@ -592,44 +592,27 @@ def check_giftbox(user, cookies, user_info):
         red_log(user, '自动执行', '宝箱', log)
     time.sleep(3)
 
-def shake_box(user, cookies, user_info):
-    print(datetime.now().strftime('%Y-%m-%d %H:%M:%S'), 'shake_gift')
-    box_info = api_shakegift(cookies)
-    time.sleep(2)
-    print(datetime.now().strftime('%Y-%m-%d %H:%M:%S'), '************',box_info)
-    if box_info.get('r') == -2: return
-    left = box_info.get('left')
-    while(left > -1):
-        id = box_info.get('id')
-        if id is None:
-            box_info = api_shakegift(cookies)
+def shake_box(user, cookies, user_info):   
+    a=[147340405,147340579,147341245]
+
+
+    for id in a
+        stone_info = api_stoneinfo(cookies,id)
+        time.sleep(2)
+        log1='stoninfo:%s'%stone_info
+        red_log(user, '自动执行', '宝箱', log1)			
+        cost = stone_info.get('cost')
+        if cost==0:
+            r_info = api_openshakestone(cookies, id, direction='3')
             time.sleep(2)
-            print(datetime.now().strftime('%Y-%m-%d %H:%M:%S'), '************',box_info)
-            left = box_info.get('left')
-            log = '摇宝箱丢弃石头'
-            red_log(user, '自动执行', '宝箱', log)
-#             box_info = api_shakegift(cookies)
-#             time.sleep(2)
-            continue
-        if id is not None:
-            stone_info = api_stoneinfo(cookies,id)
-            print(datetime.now().strftime('%Y-%m-%d %H:%M:%S'), '************stoneinfo',stone_info)
-            time.sleep(2)
-            cost = stone_info.get('cost')
-            if cost==0:
-                r_info = api_openshakestone(cookies, id, direction='3')
-                print(datetime.now().strftime('%Y-%m-%d %H:%M:%S'), '************',r_info,box_info)
-                time.sleep(2)
-                r = r_info.get('get')
-                log =  '摇宝箱摇宝箱开启:获得:%s水晶.' % r_info.get('num')
-                red_log(user, '自动执行', '宝箱', log)
-            else:
-                log =  '摇宝箱摇宝箱丢弃:%d水晶box.' % cost
-                red_log(user, '自动执行', '宝箱', log)
-            box_info = api_shakegift(cookies)
-            time.sleep(2)    
-            print(datetime.now().strftime('%Y-%m-%d %H:%M:%S'), '************',box_info)
-    
+            log1='openstoninfo:%s'%r_info
+            red_log(user, '自动执行', '宝箱', log1)				
+            r = r_info.get('get')
+            log =  '摇宝箱摇宝箱开启:获得:%s水晶.' % r.get('num')
+            else
+            log =  '摇宝箱摇宝箱丢弃:%d水晶.' % cost
+        red_log(user, '自动执行', '宝箱', log)
+      
     
     
 def shake_box1(user, cookies, user_info):
