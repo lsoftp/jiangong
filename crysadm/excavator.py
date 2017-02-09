@@ -139,7 +139,7 @@ def collect_all():
         if left is None:left = -1    
         while(left > 0):
             box_info = api_shakegift(cookies)
-            time.sleep(4)
+            time.sleep(2)
             log1='shake2:%s'%box_info
             red_log( '自动执行', '宝箱',user_id, log1)
             left = box_info.get('left') 
@@ -148,10 +148,11 @@ def collect_all():
             if id is None:
                 log = '摇宝箱丢弃石头'
             if id is not None:
+                if(type(id)==str):id=int(id)
                 stone_info = api_stoneinfo(cookies,id)
                 time.sleep(2)
                 log1='stoninfo:%s'%stone_info
-                red_log(user, '自动执行', '宝箱', log1)			
+                red_log('自动执行', '宝箱',user_id, log1)			
                 cost = stone_info.get('cost')
                 if cost is None:cost=-1
                 if cost==0:
