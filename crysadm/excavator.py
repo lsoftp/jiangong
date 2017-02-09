@@ -253,14 +253,14 @@ def searcht_id(user_id):
     if r.get('r') != 0:
         session['error_message'] = regular_html(r.get('rd'))
         red_log('手动执行', '进攻', user_id, regular_html(r.get('rd')))
-        return redirect(url_for('excavators'))
+#        return redirect(url_for('excavators'))
     else:
         session['info_message'] = '获得:%s秘银.' % r.get('s')
         red_log('手动执行', '进攻', user_id, '获得:%s秘银.' % r.get('s'))
-    account_data_key = account_key + ':data'
-    account_data_value = json.loads(r_session.get(account_data_key).decode("utf-8"))
-    account_data_value.get('mine_info')['td_not_in_a'] = 0
-    r_session.set(account_data_key, json.dumps(account_data_value))
+        account_data_key = account_key + ':data'
+        account_data_value = json.loads(r_session.get(account_data_key).decode("utf-8"))
+        account_data_value.get('mine_info')['td_not_in_a'] = 0
+        r_session.set(account_data_key, json.dumps(account_data_value))
     
     box_info = api_shakeLeft(cookies)
     time.sleep(2)
