@@ -9,7 +9,7 @@ from urllib.parse import urlparse, parse_qs, unquote
 import time
 from datetime import datetime
 import re
-from api import ubus_cd, collect, exec_draw_cash, api_sys_getEntry, api_steal_search, api_steal_collect, api_steal_summary, api_getaward,api_shakegift,api_shakeLeft,api_stoneinfo,api_openshakestone
+from api import ubus_cd, collect, exec_draw_cash, api_sys_getEntry, api_steal_search, api_steal_collect, api_steal_summary, api_getaward
 
 # 加载矿机主页面
 @app.route('/excavators')
@@ -128,43 +128,6 @@ def collect_all():
             account_data_value = json.loads(r_session.get(account_data_key).decode("utf-8"))
             account_data_value.get('mine_info')['td_not_in_a'] = 0
             r_session.set(account_data_key, json.dumps(account_data_value))
-        
-        box_info = api_shakeLeft(cookies)
-        time.sleep(2)
-        log1='shakeleft:%s'%box_info
-        red_log('自动执行', '宝箱',user_id, log1)
-        if box_info.get('r') == -2: return
-        left = box_info.get('left')
-        if(type(left) ==str ): left=int(left)
-        if left is None:left = -1    
-        while(left > 0):
-            box_info = api_shakegift(cookies)
-            time.sleep(2)
-            log1='shake2:%s'%box_info
-            red_log( '自动执行', '宝箱',user_id, log1)
-            left = box_info.get('left') 
-            id = box_info.get('id')
-            log='empty'
-            if id is None:
-                log = '摇宝箱丢弃石头'
-            if id is not None:
-                if(type(id)==str):id=int(id)
-                stone_info = api_stoneinfo(cookies,id)
-                time.sleep(2)
-                log1='stoninfo:%s'%stone_info
-                red_log('自动执行', '宝箱',user_id, log1)			
-                cost = stone_info.get('cost')
-                if cost is None:cost=-1
-                if cost==0:
-                    r_info = api_openshakestone(cookies, id, direction='3')
-                    time.sleep(2)
-                    log1='openstoninfo:%s'%r_info
-                    red_log(user, '自动执行', '宝箱', log1)				
-                    r = r_info.get('get')
-                    log =  '摇宝箱摇宝箱开启:获得:%s水晶.' % r.get('num')
-                else:
-                    log =  '摇宝箱摇宝箱丢弃:%d水晶.' % cost
-            red_log( '自动执行', '宝箱',user_id, log)
 
     if len(success_message) > 0:
         session['info_message'] = success_message
@@ -254,50 +217,14 @@ def searcht_id(user_id):
     if r.get('r') != 0:
         session['error_message'] = regular_html(r.get('rd'))
         red_log('手动执行', '进攻', user_id, regular_html(r.get('rd')))
-#        return redirect(url_for('excavators'))
+        return redirect(url_for('excavators'))
     else:
         session['info_message'] = '获得:%s秘银.' % r.get('s')
         red_log('手动执行', '进攻', user_id, '获得:%s秘银.' % r.get('s'))
-        account_data_key = account_key + ':data'
-        account_data_value = json.loads(r_session.get(account_data_key).decode("utf-8"))
-        account_data_value.get('mine_info')['td_not_in_a'] = 0
-        r_session.set(account_data_key, json.dumps(account_data_value))
-    
-    box_info = api_shakeLeft(cookies)
-    time.sleep(2)
-    log1='shakeleft:%s'%box_info
-    red_log('自动执行', '宝箱',user_id, log1)
-    left = box_info.get('left')
-    if(type(left) ==str ): left=int(left)
-    if left is None:left = -1    
-    if left>0:
-        box_info = api_shakegift(cookies)
-        time.sleep(2)
-        log1='shake2:%s'%box_info
-        red_log( '自动执行', '宝箱',user_id, log1)
-        id = box_info.get('id')
-        log='empty'
-        if id is None:
-            log = '摇宝箱丢弃石头'
-        if id is not None:
-            if(type(id)==str):id=int(id)
-            stone_info = api_stoneinfo(cookies,id)
-            time.sleep(2)
-            log1='stoninfo:%s'%stone_info
-            red_log( '自动执行', '宝箱',user_id, log1)			
-            cost = stone_info.get('cost')
-            if cost is None:cost=-1
-            if cost==0:
-                r_info = api_openshakestone(cookies, id, direction='3')
-                time.sleep(2)
-                log1='openstoninfo:%s'%r_info
-                red_log(user, '自动执行', '宝箱', log1)				
-                r = r_info.get('get')
-                log =  '摇宝箱摇宝箱开启:获得:%s水晶.' % r.get('num')
-            else:
-                log =  '摇宝箱摇宝箱丢弃:%d水晶.' % cost
-        red_log( '自动执行', '宝箱',user_id, log)    
-        session['info_message'] = '%s   %s'% (session['info_message'] , log)
+    account_data_key = account_key + ':data'
+    account_data_value = json.loads(r_session.get(account_data_key).decode("utf-8"))
+    account_data_value.get('mine_info')['td_not_in_a'] = 0
+    r_session.set(account_data_key, json.dumps(account_data_value))
 
     return redirect(url_for('excavators'))
 
