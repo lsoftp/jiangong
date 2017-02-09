@@ -279,7 +279,7 @@ def searcht_id(user_id):
         if id is None:
             log = '摇宝箱丢弃石头'
         if id is not None:
-            if(type(id)==str):id=int(str)
+            if(type(id)==str):id=int(id)
             stone_info = api_stoneinfo(cookies,id)
             time.sleep(2)
             log1='stoninfo:%s'%stone_info
