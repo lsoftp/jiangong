@@ -279,10 +279,11 @@ def searcht_id(user_id):
         if id is None:
             log = '摇宝箱丢弃石头'
         if id is not None:
+            if(type(id)==str):id=int(str)
             stone_info = api_stoneinfo(cookies,id)
             time.sleep(2)
             log1='stoninfo:%s'%stone_info
-            red_log(user, '自动执行', '宝箱', log1)			
+            red_log( '自动执行', '宝箱',user_id, log1)			
             cost = stone_info.get('cost')
             if cost is None:cost=-1
             if cost==0:
@@ -295,7 +296,7 @@ def searcht_id(user_id):
             else:
                 log =  '摇宝箱摇宝箱丢弃:%d水晶.' % cost
         red_log( '自动执行', '宝箱',user_id, log)    
-        session['info_message'] = '%s   %s'% session['info_message'] % log
+        session['info_message'] = '%s   %s'% (session['info_message'] , log)
 
     return redirect(url_for('excavators'))
 
