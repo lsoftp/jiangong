@@ -602,6 +602,7 @@ def shake_box(user, cookies, user_info):
         log1='stoninfo:%s'%stone_info
         red_log(user, '自动执行', '宝箱', log1)			
         cost = stone_info.get('cost')
+        if cost is None:cost=-1
         if cost==0:
             r_info = api_openshakestone(cookies, id, direction='3')
             time.sleep(2)
