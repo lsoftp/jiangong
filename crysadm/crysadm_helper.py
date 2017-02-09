@@ -623,10 +623,10 @@ def shake_box1(user, cookies, user_info):
     red_log(user, '自动执行', '宝箱', log1)
     if box_info.get('r') == -2: return
     left = box_info.get('left')
-    if(left !=0 ): left=int(left)
+    if(type(left)==str ): left=int(left)
     while(left > 0):
         box_info = api_shakegift(cookies)
-        time.sleep(4)
+        time.sleep(2)
         log1='shake2:%s'%box_info
         red_log(user, '自动执行', '宝箱', log1)
         left = box_info.get('left') 
@@ -635,6 +635,7 @@ def shake_box1(user, cookies, user_info):
         if id is None:
             log = '摇宝箱丢弃石头'
         if id is not None:
+            if(type(id)==str):id=int(id)
             stone_info = api_stoneinfo(cookies,id)
             time.sleep(2)
             log1='stoninfo:%s'%stone_info
