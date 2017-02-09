@@ -295,7 +295,7 @@ def searcht_id(user_id):
             else:
                 log =  '摇宝箱摇宝箱丢弃:%d水晶.' % cost
         red_log( '自动执行', '宝箱',user_id, log)    
-        session['info_message'] = session['info_message'] + log
+        session['info_message'] = '%s   %s'% session['info_message'] % log
 
     return redirect(url_for('excavators'))
 
