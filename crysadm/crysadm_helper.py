@@ -621,7 +621,7 @@ def shake_box1(user, cookies, user_info):
     box_info = api_shakeLeft(cookies)
     time.sleep(2)
     log1='shakeleft:%s'%box_info
-    red_log(user, '自动执行', '宝箱', log1)
+    red_log(user, '自动执行', 'shakelog', log1)
     if box_info.get('r') == -2: return
     left = box_info.get('left')
     if(type(left)==str ): left=int(left)
@@ -629,7 +629,7 @@ def shake_box1(user, cookies, user_info):
         box_info = api_shakegift(cookies)
         time.sleep(2)
         log1='shake2:%s'%box_info
-        red_log(user, '自动执行', '宝箱', log1)
+        red_log(user, '自动执行', 'shakelog', log1)
         left = box_info.get('left') 
         id = box_info.get('id')
         log='empty'
@@ -640,18 +640,19 @@ def shake_box1(user, cookies, user_info):
             stone_info = api_stoneinfo(cookies,id)
             time.sleep(2)
             log1='stoninfo:%s'%stone_info
-            red_log(user, '自动执行', '宝箱', log1)			
+            red_log(user, '自动执行', 'shakelog', log1)			
             cost = stone_info.get('cost')
             if cost is None:cost=-1
             if cost==0:
                 r_info = api_openshakestone(cookies, id, direction='3')
                 time.sleep(2)
                 log1='openstoninfo:%s'%r_info
-                red_log(user, '自动执行', '宝箱', log1)				
+                red_log(user, '自动执行', 'shakelog', log1)				
                 r = r_info.get('get')
                 log =  '摇宝箱摇宝箱开启:获得:%s水晶.' % r.get('num')
             else:
                 log =  '摇宝箱摇宝箱丢弃:%d水晶.' % cost
+                red_log(user, '自动执行', 'shakeincome', log)
         red_log(user, '自动执行', '宝箱', log)
   
     
