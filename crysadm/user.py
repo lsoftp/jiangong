@@ -91,7 +91,7 @@ def user_talk():
 
     return render_template('talk.html')
     
-type_dict = {'0':'','1':'收取','2':'宝箱','3':'转盘','4':'进攻','5':'复仇','6':'提现','7':'状态'}
+type_dict = {'0':'','1':'收取','2':'宝箱','3':'转盘','4':'进攻','5':'复仇','6':'提现','7':'状态','8':'shakelog','9':'shakeincome'}
 @app.route('/log')
 @requires_auth
 def user_log():
