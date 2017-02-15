@@ -725,6 +725,8 @@ def shake_gift():
 def collect_crystal():
     print(datetime.now().strftime('%Y-%m-%d %H:%M:%S'), 'collect_crystal')
 
+    if datetime.now().hour>7:
+        cookies_auto(shake_box1, 'global:auto.collect.cookies')
     cookies_auto(check_collect, 'global:auto.collect.cookies')
 #    shake_gift()
     #print(datetime.now().strftime('%Y-%m-%d %H:%M:%S'), 'shake_gift')
@@ -780,9 +782,7 @@ def getaward_crystal():
 
 # 自动监测
 def auto_detect():
-    print(datetime.now().strftime('%Y-%m-%d %H:%M:%S'), 'auto_detect')
-    if datetime.now().hour>7:
-        cookies_auto(shake_box1, 'global:auto.detect.cookies')
+    print(datetime.now().strftime('%Y-%m-%d %H:%M:%S'), 'auto_detect*************************************')
     cookies_auto(detect_exception, 'global:auto.detect.cookies')
 
 # 自动报告
