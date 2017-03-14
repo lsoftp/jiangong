@@ -725,7 +725,7 @@ def shake_gift():
 def collect_crystal():
     print(datetime.now().strftime('%Y-%m-%d %H:%M:%S'), 'collect_crystal')
 
-    if datetime.now().hour>7:
+    if datetime.now().hour>6:
         cookies_auto(shake_box1, 'global:auto.collect.cookies')
     cookies_auto(check_collect, 'global:auto.collect.cookies')
 #    shake_gift()
